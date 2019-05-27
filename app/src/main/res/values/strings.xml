@@ -2,5 +2,15 @@
     <string name="app_name">Coin Conventer</string>
     <string name="editTextPrice">Convert To:</string>
     <string name="convert_from">Convert From:</string>
-    <string name="button">Convert</string>
+    <string name="buttonConvert">Convert</string>
+    <string name="price_per_1_kk">Price Per 1 kk:</string>
+    <string name="_editTextPrice">5</string>
+    <string name="coins_to_rubles">Coins To Rubles:</string>
+    <string name="_editTextCoinsToRubles">10</string>
+    <string name="_editTextRublesToCoins">10</string>
+    <string name="vk_coins">VK Coins</string>
+    <string name="rubles_to_coins">Rubles To Coins:</string>
+    <string name="rubles">rubles</string>
+    <string name="kk">kk</string>
+    <string name="textViewVersion">Version: 1.0.19.0528</string>
 </resources>

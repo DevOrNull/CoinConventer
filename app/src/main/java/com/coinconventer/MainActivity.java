@@ -1,20 +1,12 @@
 package com.coinconventer;
 
+import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import static java.lang.Float.valueOf;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,54 +17,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = (Button) findViewById(R.id.button);
-        //implementing OnClickListener (need to override the method)
+        button = findViewById(R.id.buttonConvert);
         button.setOnClickListener(this);
-
     }
 
-        public void onClick(View v){
+    @SuppressLint("DefaultLocale")
+    public void onClick(View v){
 
-            EditText editTextPrice = (EditText) findViewById(R.id.editTextPrice);
+        EditText editTextPrice = findViewById(R.id.editTextPrice);
 
-            EditText editTextCoinsForRubles = (EditText) findViewById(R.id.editTextCoinsForRubles);
-            TextView textViewCoinsForRubles = (TextView) findViewById(R.id.textViewCoinsForRubles);
+        // Coins -> Rubles
+        EditText editTextCoinsToRubles = findViewById(R.id.editTextCoinsToRubles);
+        TextView textViewCoinsToRubles = findViewById(R.id.textViewCoinsToRubles);
 
-            if (editTextCoinsForRubles.getText().toString().isEmpty()
-                    || editTextCoinsForRubles.getText().toString().equals(".")
-                    || editTextPrice.getText().toString().isEmpty()
-                    || editTextPrice.getText().toString().equals(".")) {
-                textViewCoinsForRubles.setText("0");
-                return;
-            }
+        // Rubles -> Coins
+        EditText editTextRublesToCoins = findViewById(R.id.editTextRublesToCoins);
+        TextView textViewRublesToCoins = findViewById(R.id.textViewRublesToCoins);
 
-            Float mPrice = Float.parseFloat(editTextPrice.getText().toString());
-            Float mCoinToRubles = Float.parseFloat(editTextCoinsForRubles.getText().toString());
-
-            textViewCoinsForRubles.setText(String.format("%.2f", mCoinToRubles * mPrice));
-
-            // RublesForCoins
-            TextView textViewRublesForCoins = (TextView) findViewById(R.id.textViewRublesForCoins);
-            EditText editTextRublesForCoins = (EditText) findViewById(R.id.editTextRublesForCoins);
-
-            if (editTextPrice.getText().toString().isEmpty()
-                    || editTextPrice.getText().toString().equals(".")
-                    || editTextRublesForCoins.getText().toString().isEmpty()
-                    || editTextRublesForCoins.getText().toString().equals(".")) {
-                textViewRublesForCoins.setText("0");
-                return;
-            }
-
-            Float mRublesForCoins = Float.parseFloat(editTextRublesForCoins.getText().toString());
-
-            textViewRublesForCoins.setText(String.format("%.2f", mRublesForCoins / mPrice) + " kk");
-            textViewCoinsForRubles.setText(String.format("%.2f", mCoinToRubles * mPrice));
-
+        if (editTextPrice.getText().toString().isEmpty()
+                || editTextPrice.getText().toString().equals(".")){
+            textViewCoinsToRubles.setText("0");
+            textViewRublesToCoins.setText("0");
+            return;
         }
 
+        if (editTextCoinsToRubles.getText().toString().isEmpty()
+                || editTextCoinsToRubles.getText().toString().equals(".")) {
+            textViewCoinsToRubles.setText("0");
+            return;
+        }
 
-/*        final EditText editTextCoinsForRubles = (EditText) findViewById(R.id.editTextCoinsForRubles);
-        editTextCoinsForRubles.addTextChangedListener(new TextWatcher() {
+        Float mPrice = Float.parseFloat(editTextPrice.getText().toString());
+        Float mCoinToRubles = Float.parseFloat(editTextCoinsToRubles.getText().toString());
+
+        textViewCoinsToRubles.setText(String.format("%.2f", mCoinToRubles * mPrice));
+
+        if (editTextRublesToCoins.getText().toString().isEmpty()
+                || editTextRublesToCoins.getText().toString().equals(".")) {
+            textViewRublesToCoins.setText("0");
+            return;
+        }
+
+        Float mRublesToCoins = Float.parseFloat(editTextRublesToCoins.getText().toString());
+
+        textViewRublesToCoins.setText(String.format("%.2f", mRublesToCoins / mPrice) + getString(R.string.kk));
+        //костыль для корректного подсчёта, если editTextRublesToCoins.isEmpty
+        textViewCoinsToRubles.setText(String.format("%.2f", mCoinToRubles * mPrice));
+    }
+
+
+/*        final EditText editTextCoinsToRubles = (EditText) findViewById(R.id.editTextCoinsToRubles);
+        editTextCoinsToRubles.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -87,21 +82,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
 
-                TextView textViewCoinsForRubles = (TextView) findViewById(R.id.textViewCoinsForRubles);
+                TextView textViewCoinsToRubles = (TextView) findViewById(R.id.textViewCoinsToRubles);
                 EditText editTextPrice = (EditText) findViewById(R.id.editTextPrice);
 
-                if (editTextCoinsForRubles.getText().toString().isEmpty()
-                        || editTextCoinsForRubles.getText().toString().equals(".")
+                if (editTextCoinsToRubles.getText().toString().isEmpty()
+                        || editTextCoinsToRubles.getText().toString().equals(".")
                         || editTextPrice.getText().toString().isEmpty()
                         || editTextPrice.getText().toString().equals(".")) {
-                    textViewCoinsForRubles.setText("0");
+                    textViewCoinsToRubles.setText("0");
                     return;
                 }
 
                 Float mPrice = Float.parseFloat(editTextPrice.getText().toString());
-                Float mCoinToRubles = Float.parseFloat(editTextCoinsForRubles.getText().toString());
+                Float mCoinToRubles = Float.parseFloat(editTextCoinsToRubles.getText().toString());
 
-                textViewCoinsForRubles.setText(String.format("%.2f", mCoinToRubles * mPrice));
+                textViewCoinsToRubles.setText(String.format("%.2f", mCoinToRubles * mPrice));
 
             }
         });*/

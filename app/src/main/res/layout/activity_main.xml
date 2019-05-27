@@ -19,8 +19,8 @@
             android:layout_weight="100"
             android:textStyle="bold"
             android:gravity="center"
-            android:textSize="14dp"
-            android:text="Price Per 1 kk:" />
+            android:textSize="14sp"
+            android:text="@string/price_per_1_kk" />
 
     </LinearLayout>
 
@@ -38,9 +38,9 @@
             android:ems="10"
             android:inputType="numberDecimal"
             android:maxLength="8"
-            android:text="5"
+            android:text="@string/_editTextPrice"
             android:gravity="center"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -77,8 +77,8 @@
             android:layout_weight="100"
             android:textStyle="bold"
             android:gravity="center"
-            android:textSize="14dp"
-            android:text="Coins For Rubles:" />
+            android:textSize="14sp"
+            android:text="@string/coins_to_rubles" />
 
     </LinearLayout>
 
@@ -89,35 +89,35 @@
         android:padding="5dp">
 
         <EditText
-            android:id="@+id/editTextCoinsForRubles"
+            android:id="@+id/editTextCoinsToRubles"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberDecimal"
             android:maxLength="8"
-            android:text="10"
-            android:textSize="18dp"
+            android:text="@string/_editTextCoinsToRubles"
+            android:textSize="18sp"
             android:gravity="center"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textViewCoinsForRubles"
+            android:id="@+id/textViewCoinsToRubles"
             android:layout_width="34dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:text="" />
 
         <TextView
-            android:id="@+id/textViewCoinsForRublesValue"
+            android:id="@+id/textViewCoinsToRublesValue"
             android:layout_width="34dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="18dp"
-            android:text="rubles" />
+            android:textSize="18sp"
+            android:text="@string/rubles" />
     </LinearLayout>
 
     <View
@@ -138,8 +138,8 @@
             android:layout_weight="100"
             android:textStyle="bold"
             android:gravity="center"
-            android:textSize="14dp"
-            android:text="Rubles For Coins:" />
+            android:textSize="14sp"
+            android:text="@string/rubles_to_coins" />
 
     </LinearLayout>
 
@@ -150,35 +150,35 @@
         android:padding="5dp">
 
         <EditText
-            android:id="@+id/editTextRublesForCoins"
+            android:id="@+id/editTextRublesToCoins"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberDecimal"
             android:maxLength="8"
-            android:text="10"
+            android:text="@string/_editTextRublesToCoins"
             android:gravity="center"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textViewRublesForCoins"
+            android:id="@+id/textViewRublesToCoins"
             android:layout_width="34dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:text="" />
 
         <TextView
-            android:id="@+id/textViewRublesForCoinsValue"
+            android:id="@+id/textViewRublesToCoinsValue"
             android:layout_width="34dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="18dp"
-            android:text="VK Coins" />
+            android:textSize="18sp"
+            android:text="@string/vk_coins" />
 
     </LinearLayout>
 
@@ -192,14 +192,28 @@
         android:textStyle="bold"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonConvert"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2E82C7"
         android:padding="10dp"
-        android:text="Convert"
         android:textColor="#EEE4E4"
+        android:text="@string/buttonConvert"
         android:textSize="15sp"
         android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textViewVersion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewVersion"
+        android:textAlignment="viewEnd"
+        android:textSize="10sp"
+        tools:ignore="SmallSp" />
 
 </LinearLayout>
